@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include penerimaan_biji *.css
+recursive-include penerimaan_biji *.csv
+recursive-include penerimaan_biji *.html
+recursive-include penerimaan_biji *.ico
+recursive-include penerimaan_biji *.js
+recursive-include penerimaan_biji *.json
+recursive-include penerimaan_biji *.md
+recursive-include penerimaan_biji *.png
+recursive-include penerimaan_biji *.py
+recursive-include penerimaan_biji *.svg
+recursive-include penerimaan_biji *.txt
+recursive-exclude penerimaan_biji *.pyc
