@@ -18,8 +18,10 @@ class KodeBatch(Document):
 				doc.total=doc.sn_def*doc.qty
 			elif doc.sn_tak and doc.sn_tak >0:
 				doc.total=doc.sn_tak*doc.qty
-			else:
+			elif doc.sn_est and doc.sn_est >0:
 				doc.total=doc.sn_est*doc.qty
+			else:
+				doc.total=0
 			doc.save(ignore_permissions=True)
 		if self.sn_def and self.sn_def>0:
 			self.ton_def=self.sn_def*self.total
