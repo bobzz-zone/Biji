@@ -15,7 +15,7 @@ def get_data():
 				},
 				{
 					"type": "doctype",
-					"name": "kode Batch",
+					"name": "Kode Batch",
 				},
 			]
 		},
