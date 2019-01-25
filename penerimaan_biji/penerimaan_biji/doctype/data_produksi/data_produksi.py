@@ -6,7 +6,7 @@ from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
 
-class DialyData(Document):
+class DataProduksi(Document):
 	pass
 	def on_submit(self):
 		batch = frappe.get_doc("Kode Batch",self.batch)
