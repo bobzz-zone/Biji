@@ -9,8 +9,9 @@ from frappe.model.document import Document
 class KodeBatch(Document):
 	pass
 	def on_update_after_submit(self):
-		lists = frappe.get_all("Data Produksi",filters={"batch":self.name,"docstatus":("!=",2)})
-		for doc in lists:
+		lists = frappe.get_all("Data Produksi",filters={"batch":self.name,"docstatus":("!=",2)},fields=["name"])
+		for row in lists:
+			doc = frappe.get_doc("Data Produksi",row.name)
 			doc.sn_est=self.sn_est
 			doc.sn_tak=self.sn_tak
 			doc.sn_def=self.sn_def
