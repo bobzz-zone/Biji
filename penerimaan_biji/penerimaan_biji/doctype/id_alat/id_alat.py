@@ -8,4 +8,4 @@ from frappe.model.document import Document
 
 class IDAlat(Document):
 	def autoname(self):
-		return "{}{}{}{}".format(self.kode_objek,self.kode_alat,self.id_alat,self.iup)
+		self.name= "{}{}{}{}".format(self.kode_objek,self.kode_alat,self.lokasi,self.iup)
