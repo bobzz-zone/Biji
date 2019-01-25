@@ -4,6 +4,7 @@ cur_frm.add_fetch("id_alat", "kode_objek", "kode_objek");
 cur_frm.add_fetch("id_alat", "unit_produksi", "unit_produksi");
 cur_frm.add_fetch("id_alat", "badan_usaha", "badan_usaha");
 cur_frm.add_fetch("batch", "satuan", "satuan");
+cur_frm.add_fetch("batch", "id_alat", "id_alat");
 
 frappe.ui.form.on('Data Produksi', {
         validate: function(frm){
