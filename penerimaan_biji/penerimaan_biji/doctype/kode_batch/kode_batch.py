@@ -9,7 +9,7 @@ from frappe.model.document import Document
 class KodeBatch(Document):
 	pass
 	def on_update_after_submit(self):
-		lists = frappe.get_all("Data Produksi",filters={"kode_batch":self.name,"docstatus":("!=",2)})
+		lists = frappe.get_all("Data Produksi",filters={"batch":self.name,"docstatus":("!=",2)})
 		for doc in lists:
 			doc.sn_est=self.sn_est
 			doc.sn_tak=self.sn_tak
