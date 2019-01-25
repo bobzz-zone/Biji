@@ -7,4 +7,5 @@ import frappe
 from frappe.model.document import Document
 
 class IDAlat(Document):
-	pass
+	def autoname(self):
+		self.name= "{}{}{}{}".format(self.kode_objek,self.kode_alat,self.lokasi,self.iup)
