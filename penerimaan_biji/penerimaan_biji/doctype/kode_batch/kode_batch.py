@@ -21,6 +21,15 @@ class KodeBatch(Document):
 			else:
 				doc.total=doc.sn_est*doc.qty
 			doc.save(ignore_permissions=True)
-		self.ton_def=self.sn_def*self.total
-		self.ton_tak=self.sn_tak*self.total
-		self.ton_est=self.sn_est*self.total
+		if self.sn_def and self.sn_def>0:
+			self.ton_def=self.sn_def*self.total
+		else:
+			self.ton_def=0
+		if self.sn_tak and self.sn_tak>0:
+			self.ton_tak=self.sn_tak*self.total
+		else:
+			self.ton_tak=0
+		if self.sn_est and self.sn_est>0:
+			self.ton_est=self.sn_est*self.total
+		else:
+			self.ton_est=0
