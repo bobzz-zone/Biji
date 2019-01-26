@@ -37,5 +37,10 @@ class BAP(Document):
 			"sn_est":batch.sn_def,
 			"total":x
 		})
+
 		doc.insert()
-		doc.on_submit()
+		doc.submit()
+		self.data_produksi=doc.name
+	def on_cancel(self):
+		doc=frappe.get_doc("Data Produksi",self.data_produksi)
+		doc.cancel(ignore_permissions=True)
