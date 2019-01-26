@@ -23,7 +23,6 @@ class BAP(Document):
 			"id_alat": self.id_alat,
 			"batch": self.batch,
 			"kode_objek":self.kode_objek,
-			"objek":self.objek,
 			"kelas":self.kelas,
 			"nama_tambang":self.nama_tambang,
 			"unit_produksi":self.unit_produksi,
