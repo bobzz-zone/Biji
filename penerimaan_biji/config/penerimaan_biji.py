@@ -11,6 +11,10 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+					"name": "BAP",
+				},
+				{
+					"type": "doctype",
 					"name": "ID Alat",
 				},
 				{
@@ -25,6 +29,10 @@ def get_data():
 				{
 					"type": "doctype",
 					"name": "Objek Produksi",
+				},
+				{
+					"type": "doctype",
+					"name": "Vendor",
 				},
 				{
 					"type": "doctype",
