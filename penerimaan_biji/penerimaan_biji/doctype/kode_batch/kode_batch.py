@@ -10,7 +10,7 @@ from frappe.model.naming import make_autoname
 class KodeBatch(Document):
 	pass
 	def autoname(self):
-		self.name=make_autoname("{}.YYYY.####".format(self.lokasi),doc=self)
+		self.name=make_autoname("{}.YYYY.####".format(self.s_loc),doc=self)
 	def on_update_after_submit(self):
 		lists = frappe.get_all("Data Produksi",filters={"batch":self.name,"docstatus":("!=",2)},fields=["name"])
 		for row in lists:
