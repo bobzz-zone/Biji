@@ -68,7 +68,7 @@
    "read_only": 0, 
    "remember_last_selected_value": 0, 
    "report_hide": 0, 
-   "reqd": 0, 
+   "reqd": 1, 
    "search_index": 0, 
    "set_only_once": 0, 
    "unique": 0
@@ -84,7 +84,7 @@
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
- "modified": "2019-01-28 17:23:07.672908", 
+ "modified": "2019-02-01 14:54:57.967580", 
  "modified_by": "Administrator", 
  "module": "Penerimaan Biji", 
  "name": "WASPROD", 
