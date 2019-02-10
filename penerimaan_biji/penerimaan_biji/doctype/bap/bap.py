@@ -10,6 +10,8 @@ class BAP(Document):
 	pass
 	def on_submit(self):
 		batch=frappe.get_doc("Kode Batch",self.batch)
+		if bath.used == 1:
+			frappe.throw("Batch Sudah tidak bisa di pakai untuk produksi")
 		x=0
 		if batch.sn_def and batch.sn_def >0:
 			x=batch.sn_def*self.bruto

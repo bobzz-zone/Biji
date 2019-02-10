@@ -10,6 +10,8 @@ class DataProduksi(Document):
 	pass
 	def on_submit(self):
 		batch = frappe.get_doc("Kode Batch",self.batch)
+		if bath.used == 1:
+			frappe.throw("Batch Sudah tidak bisa di pakai untuk produksi")
 		batch.total = batch.total+self.qty
 		batch.ton_def=batch.sn_def*batch.total
 		batch.ton_tak=batch.sn_tak*batch.total
@@ -17,6 +19,8 @@ class DataProduksi(Document):
 		batch.save(ignore_permissions=True)
 	def on_cancel(self):
 		batch = frappe.get_doc("Kode Batch",self.batch)
+		if bath.used == 1:
+			frappe.throw("Batch Sudah tidak bisa di ubah")
 		batch.total = batch.total-self.qty
 		batch.ton_def=batch.sn_def*batch.total
 		batch.ton_tak=batch.sn_tak*batch.total

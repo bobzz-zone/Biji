@@ -12,6 +12,26 @@ class KodeBatch(Document):
 	def autoname(self):
 		self.name=make_autoname("{}.YYYY.###".format(self.s_loc),doc=self)
 	def on_update_after_submit(self):
+		if self.sn_est and self.sn_est>0:
+			self.ton_est=self.sn_est*self.total
+			self.ton_final = self.ton_est
+		else:
+			self.ton_est=0
+
+		if self.sn_tak and self.sn_tak>0:
+			self.ton_tak=self.sn_tak*self.total
+			self.ton_final = self.ton_tak
+		else:
+			self.ton_tak=0
+			
+		if self.sn_def and self.sn_def>0:
+			self.ton_def=self.sn_def*self.total
+			self.ton_final = self.ton_def
+		else:
+			self.ton_def=0
+		
+		
+	def on_update_after_submit_old(self):
 		lists = frappe.get_all("Data Produksi",filters={"batch":self.name,"docstatus":("!=",2)},fields=["name"])
 		for row in lists:
 			doc = frappe.get_doc("Data Produksi",row.name)
@@ -26,6 +46,7 @@ class KodeBatch(Document):
 				doc.total=doc.sn_est*doc.qty
 			else:
 				doc.total=0
+			self.ton_final = doc.total
 			doc.save(ignore_permissions=True)
 		if self.sn_def and self.sn_def>0:
 			self.ton_def=self.sn_def*self.total
