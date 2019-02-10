@@ -19,6 +19,14 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+					"name": "Process Order",
+				},
+				{
+					"type": "doctype",
+					"name": "Pengolahan Biji",
+				},
+				{
+					"type": "doctype",
 					"name": "ID Alat",
 				},
 				{
