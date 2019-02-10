@@ -1,6 +1,16 @@
 // Copyright (c) 2019, PT DAS and contributors
 // For license information, please see license.txt
-
+cur_frm.add_fetch("batch", "objek_produksi", "kode_objek");
+cur_frm.add_fetch("batch", "unit_produksi", "unit_produksi");
+cur_frm.add_fetch("batch", "badan_usaha", "badan_usaha");
+cur_frm.add_fetch("batch", "kelas", "kelas");
+cur_frm.add_fetch("batch", "satuan", "satuan");
+cur_frm.add_fetch("batch", "id_alat", "id_alat");
+cur_frm.add_fetch("batch", "sn_est", "sn_est");
+cur_frm.add_fetch("batch", "sn_tak", "sn_tak");
+cur_frm.add_fetch("batch", "sn_def", "sn_def");
+cur_frm.add_fetch("batch", "total", "netto");
+cur_frm.add_fetch("batch", "total_final", "total");
 cur_frm.add_fetch("to_loc", "type", "type");
 frappe.ui.form.on('Mutasi Biji', {
 	refresh: function(frm) {
