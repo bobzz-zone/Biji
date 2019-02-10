@@ -11,6 +11,10 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+					"name": "Mutasi Biji",
+				},
+				{
+					"type": "doctype",
 					"name": "BAP",
 				},
 				{
