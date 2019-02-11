@@ -84,7 +84,7 @@
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
- "modified": "2019-02-01 14:54:57.967580", 
+ "modified": "2019-02-11 10:17:35.593227", 
  "modified_by": "Administrator", 
  "module": "Penerimaan Biji", 
  "name": "WASPROD", 
@@ -119,6 +119,7 @@
  "show_name_in_global_search": 0, 
  "sort_field": "modified", 
  "sort_order": "DESC", 
+ "title_field": "nama", 
  "track_changes": 0, 
  "track_seen": 0
 }
