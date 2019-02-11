@@ -92,6 +92,10 @@ def get_data():
 					"type": "doctype",
 					"name": "uji Kadar",
 				},
+				{
+					"type": "doctype",
+					"name": "Kelas",
+				}
 			]
 		},
 	]
