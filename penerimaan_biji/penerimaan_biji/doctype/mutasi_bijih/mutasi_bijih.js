@@ -9,7 +9,7 @@ cur_frm.add_fetch("batch", "id_alat", "id_alat");
 cur_frm.add_fetch("batch", "sn_est", "sn_est");
 cur_frm.add_fetch("batch", "sn_tak", "sn_tak");
 cur_frm.add_fetch("batch", "sn_def", "sn_def");
-cur_frm.add_fetch("batch", "total", "netto");
+cur_frm.add_fetch("batch", "total", "qty");
 cur_frm.add_fetch("batch", "total_final", "total");
 cur_frm.add_fetch("to_loc", "type", "type");
 frappe.ui.form.on('Mutasi Bijih', {

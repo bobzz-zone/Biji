@@ -6,7 +6,7 @@ cur_frm.add_fetch("batch", "badan_usaha", "badan_usaha");
 cur_frm.add_fetch("batch", "kelas", "kelas");
 cur_frm.add_fetch("batch", "satuan", "satuan");
 cur_frm.add_fetch("batch", "id_alat", "id_alat");
-
+cur_frm.add_fetch("batch", "total", "qty");
 frappe.ui.form.on('BAP', {
 	bruto: function(frm) {
 		if (frm.doc.tara){
