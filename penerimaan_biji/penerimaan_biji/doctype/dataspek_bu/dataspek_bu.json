@@ -84,7 +84,7 @@
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
- "modified": "2019-01-28 17:27:25.631809", 
+ "modified": "2019-02-11 10:16:08.537045", 
  "modified_by": "Administrator", 
  "module": "Penerimaan Biji", 
  "name": "DataSpek BU", 
@@ -119,6 +119,7 @@
  "show_name_in_global_search": 0, 
  "sort_field": "modified", 
  "sort_order": "DESC", 
+ "title_field": "nama", 
  "track_changes": 0, 
  "track_seen": 0
 }
