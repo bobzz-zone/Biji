@@ -10,7 +10,7 @@ from frappe.model.naming import make_autoname
 class KodeBatch(Document):
 	pass
 	def autoname(self):
-		self.name=make_autoname("{}.YYYY.###".format(self.s_loc),doc=self)
+		self.name=make_autoname("{}.YY.###".format(self.s_loc),doc=self)
 	def on_update_after_submit(self):
 		if self.sn_est and self.sn_est>0:
 			self.ton_est=self.sn_est*self.total
@@ -23,7 +23,7 @@ class KodeBatch(Document):
 			self.ton_final = self.ton_tak
 		else:
 			self.ton_tak=0
-			
+
 		if self.sn_def and self.sn_def>0:
 			self.ton_def=self.sn_def*self.total
 			self.ton_final = self.ton_def
