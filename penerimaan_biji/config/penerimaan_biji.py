@@ -90,7 +90,7 @@ def get_data():
 				},
 				{
 					"type": "doctype",
-					"name": "uji Kadar",
+					"name": "Uji Kadar",
 				},
 				{
 					"type": "doctype",
