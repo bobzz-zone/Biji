@@ -6,7 +6,7 @@ cur_frm.add_fetch("id_alat", "badan_usaha", "badan_usaha");
 cur_frm.add_fetch("id_alat", "kelas", "kelas");
 frappe.ui.form.on('Kode Batch', {
 	refresh: function(frm) {
-		if(frm.doc.docstatus==1 && frm.doc.closing == null) {
+		if(frm.doc.docstatus==1 && frm.doc.status == "Open") {
 			this.frm.add_custom_button(__('Close'), function () {
 				var doc = frm.doc;
 				frappe.ui.form.is_saving = true;
