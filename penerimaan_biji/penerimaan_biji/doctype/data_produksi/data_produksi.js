@@ -7,6 +7,7 @@ cur_frm.add_fetch("batch", "kelas", "kelas");
 cur_frm.add_fetch("batch", "satuan", "satuan");
 cur_frm.add_fetch("batch", "id_alat", "id_alat");
 
+cur_frm.add_fetch("batch", "sn_est", "sn_est");
 frappe.ui.form.on('Data Produksi', {
 	on_load : function(frm) {
 		cur_frm.set_query("batch", function() {
