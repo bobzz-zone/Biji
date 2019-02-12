@@ -8,6 +8,15 @@ cur_frm.add_fetch("batch", "satuan", "satuan");
 cur_frm.add_fetch("batch", "id_alat", "id_alat");
 
 frappe.ui.form.on('Data Produksi', {
+	on_load : function(frm) {
+		cur_frm.set_query("batch", function() {
+			return {
+					"filters": {
+						"status": "Open"
+					}
+				};
+		});
+	},
         validate: function(frm){
         	if (frm.doc.status=="Closed"){
         		frappe.throw("Data Produksi Sudah Tidak Boleh di Update");

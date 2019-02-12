@@ -11,6 +11,15 @@ cur_frm.add_fetch("saksi2_nama", "email", "email2");
 cur_frm.add_fetch("saksi3_nama", "email", "email3");
 cur_frm.add_fetch("vendor", "vendor", "penyedia_jasa_nama");
 frappe.ui.form.on('BAP', {
+	on_load : function(frm) {
+		cur_frm.set_query("batch", function() {
+			return {
+					"filters": {
+						"status": "Open"
+					}
+				};
+		});
+	},
 	bruto: function(frm) {
 		if (frm.doc.tara){
 			frm.doc.netto = frm.doc.bruto - frm.doc.tara;

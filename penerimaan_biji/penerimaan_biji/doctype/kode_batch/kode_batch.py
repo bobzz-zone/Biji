@@ -8,7 +8,9 @@ from frappe.model.document import Document
 from frappe.model.naming import make_autoname
 from frappe.utils import now
 class KodeBatch(Document):
-	pass
+	def validate(self):
+		if self.status=="Closed":
+			frappe.throw("Data Batch Sudah Tidak Boleh di Update")
 	def autoname(self):
 		self.name=make_autoname("{}.YY.###".format(self.s_loc),doc=self)
 	def on_update_after_submit(self):
@@ -65,4 +67,6 @@ class KodeBatch(Document):
 def update_status(name):
 	doc = frappe.get_doc("Kode Batch",name)
 	doc.closing = now()
+	doc.status = "Closed"
 	doc.update()
+	frappe.db.sql("""update `tabData Produksi` set status = "Closed" where batch = "{}" """.format(nama))
