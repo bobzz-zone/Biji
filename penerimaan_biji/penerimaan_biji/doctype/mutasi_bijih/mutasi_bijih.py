@@ -29,4 +29,11 @@ class MutasiBijih(Document):
 			batch.sn_def = self.berat_ore * self.sn_def / self.qty
 		batch.tak_percent = self.sn_tak
 		batch.def_percent = self.sn_def
+		if self.type == "PPBT" or self.type == "BPM" :
+			batch.ppbt_total = self.total
+		elif self.type == "GBT":
+			batch.gbt_total = self.total
+		elif self.type == "GMP":
+			batch.gmp_total = self.total
 		batch.update()
+
