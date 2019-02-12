@@ -44,11 +44,12 @@ function netto_calc(frm){
 		ta = frm.doc.tara;
 	}
 	frm.doc.netto = br - ta;
-
+	var ka = 0;
 	if (frm.doc.kadar_air){
-		frm.doc.berat_air = frm.doc.kadar_air * frm.doc.netto;
+		ka = frm.doc.kadar_air * frm.doc.netto;
+		frm.doc.berat_air = ka;
 	}
-	frm.doc.berat_ore = frm.doc.netto - frm.doc.berat_air;
+	frm.doc.berat_ore = frm.doc.netto - ka;
 
 	frm.doc.total=0;
 	if (frm.doc.sn_def!=null && frm.doc.sn_def>0){

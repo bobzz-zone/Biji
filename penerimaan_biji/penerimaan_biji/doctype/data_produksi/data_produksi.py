@@ -10,7 +10,7 @@ class DataProduksi(Document):
 	pass
 	def validate(self):
 		if self.status=="Closed":
-        	frappe.throw("Data Produksi Sudah Tidak Boleh di Update")
+			frappe.throw("Data Produksi Sudah Tidak Boleh di Update")
 	def on_update(self):
 		batch = frappe.get_doc("Kode Batch",self.batch)
 		if batch.closing and batch.closing > now() :
