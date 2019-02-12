@@ -20,7 +20,7 @@ frappe.ui.form.on('Kode Batch', {
 						frappe.ui.form.is_saving = false;
 					}
 				});
-			}
+			});
 		}
 	}
 });
