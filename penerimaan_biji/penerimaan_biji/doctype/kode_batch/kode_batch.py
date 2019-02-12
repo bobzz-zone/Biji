@@ -64,9 +64,9 @@ class KodeBatch(Document):
 			self.ton_est=0
 
 @frappe.whitelist()
-def update_status(name):
+def close_batch(name):
 	doc = frappe.get_doc("Kode Batch",name)
 	doc.closing = now()
 	doc.status = "Closed"
-	doc.update()
+	doc.save()
 	frappe.db.sql("""update `tabData Produksi` set status = "Closed" where batch = "{}" """.format(nama))

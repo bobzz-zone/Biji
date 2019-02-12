@@ -10,7 +10,7 @@ frappe.ui.form.on('Kode Batch', {
 			var doc = frm.doc;
 			frappe.ui.form.is_saving = true;
 			frappe.call({
-				method: "penerimaan_biji.penerimaan_biji.doctype.kode_batch.kode_batch.update_status",
+				method: "penerimaan_biji.penerimaan_biji.doctype.kode_batch.kode_batch.close_batch",
 				args: {name: doc.name},
 				callback: function(r){
 					me.frm.reload_doc();
