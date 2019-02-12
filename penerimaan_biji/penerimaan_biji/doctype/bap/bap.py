@@ -21,7 +21,7 @@ class BAP(Document):
 			frappe.db.sql("INSERT INTO `tabSeries` (`name`, `current`) VALUES (%s, 1)", (key,))
 			current = 1
 		
-		self.name= "{No urut}/{}/Tbk/BAP-3031/{}-S2.6".format('%04d'%current,self.unit_produksi,today.strftime('%y'))
+		self.name= "{}/{}/Tbk/BAP-3031/{}-S2.6".format('%04d'%current,self.unit_produksi,today.strftime('%y'))
 	def on_submit(self):
 		batch=frappe.get_doc("Kode Batch",self.batch)
 		if batch.closing and batch.closing > now() :
