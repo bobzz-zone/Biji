@@ -13,7 +13,7 @@ class DataProduksi(Document):
         	frappe.throw("Data Produksi Sudah Tidak Boleh di Update")
 	def on_update(self):
 		batch = frappe.get_doc("Kode Batch",self.batch)
-		if batch.closing &&  batch.closing > now() :
+		if batch.closing and batch.closing > now() :
 			frappe.throw("Batch Sudah tidak bisa di pakai untuk produksi")
 		batch.total = batch.total+self.qty
 		batch.ton_def=batch.sn_def*batch.total
@@ -22,7 +22,7 @@ class DataProduksi(Document):
 		batch.save(ignore_permissions=True)
 	def on_delete(self):
 		batch = frappe.get_doc("Kode Batch",self.batch)
-		if batch.closing &&  batch.closing > now() :
+		if batch.closing and batch.closing > now() :
 			frappe.throw("Batch Sudah tidak bisa di ubah")
 		batch.total = batch.total-self.qty
 		batch.ton_def=batch.sn_def*batch.total

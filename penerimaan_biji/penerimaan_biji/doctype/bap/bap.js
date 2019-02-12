@@ -6,6 +6,10 @@ cur_frm.add_fetch("batch", "badan_usaha", "badan_usaha");
 cur_frm.add_fetch("batch", "kelas", "kelas");
 cur_frm.add_fetch("batch", "satuan", "satuan");
 cur_frm.add_fetch("batch", "id_alat", "id_alat");
+cur_frm.add_fetch("saksi1_nama", "email", "email1");
+cur_frm.add_fetch("saksi2_nama", "email", "email2");
+cur_frm.add_fetch("saksi3_nama", "email", "email3");
+cur_frm.add_fetch("vendor", "vendor", "penyedia_jasa_nama");
 frappe.ui.form.on('BAP', {
 	bruto: function(frm) {
 		if (frm.doc.tara){
