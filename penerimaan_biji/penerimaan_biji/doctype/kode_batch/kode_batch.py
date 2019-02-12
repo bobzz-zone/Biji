@@ -6,7 +6,7 @@ from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
 from frappe.model.naming import make_autoname
-
+from frappe.utils import now
 class KodeBatch(Document):
 	pass
 	def autoname(self):
@@ -60,3 +60,9 @@ class KodeBatch(Document):
 			self.ton_est=self.sn_est*self.total
 		else:
 			self.ton_est=0
+
+@frappe.whitelist()
+def update_status(name):
+	doc = frappe.get_doc("Kode Batch",name)
+	doc.closing = now()
+	doc.update()
