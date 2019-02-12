@@ -7,8 +7,8 @@ cur_frm.add_fetch("batch", "kelas", "kelas");
 cur_frm.add_fetch("batch", "satuan", "satuan");
 cur_frm.add_fetch("batch", "id_alat", "id_alat");
 cur_frm.add_fetch("batch", "sn_est", "sn_est");
-cur_frm.add_fetch("batch", "sn_tak", "sn_tak");
-cur_frm.add_fetch("batch", "sn_def", "sn_def");
+cur_frm.add_fetch("batch", "tak_percent", "sn_tak");
+cur_frm.add_fetch("batch", "def_percent", "sn_def");
 cur_frm.add_fetch("batch", "total", "qty");
 cur_frm.add_fetch("batch", "total_final", "total");
 cur_frm.add_fetch("to_loc", "type", "type");
@@ -36,6 +36,10 @@ frappe.ui.form.on('Mutasi Bijih', {
 	},
 	sn_def: function(frm) {
 		netto_calc(frm);
+	},
+	aktivitas : function (frm) {
+		frm.set_df_property("sn_tak", "read_only", frm.doc.aktivitas=="Pengiriman");
+		frm.set_df_property("sn_def", "read_only", frm.doc.aktivitas=="Pengiriman");
 	}
 });
 
