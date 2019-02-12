@@ -7,18 +7,20 @@ cur_frm.add_fetch("id_alat", "kelas", "kelas");
 frappe.ui.form.on('Kode Batch', {
 	refresh: function(frm) {
 		if(frm.doc.docstatus==1 && frm.doc.closing == null) {
-			var doc = frm.doc;
-			frappe.ui.form.is_saving = true;
-			frappe.call({
-				method: "penerimaan_biji.penerimaan_biji.doctype.kode_batch.kode_batch.close_batch",
-				args: {name: doc.name},
-				callback: function(r){
-					me.frm.reload_doc();
-				},
-				always: function() {
-					frappe.ui.form.is_saving = false;
-				}
-			});
+			this.frm.add_custom_button(__('Close'), function () {
+				var doc = frm.doc;
+				frappe.ui.form.is_saving = true;
+				frappe.call({
+					method: "penerimaan_biji.penerimaan_biji.doctype.kode_batch.kode_batch.close_batch",
+					args: {name: doc.name},
+					callback: function(r){
+						me.frm.reload_doc();
+					},
+					always: function() {
+						frappe.ui.form.is_saving = false;
+					}
+				});
+			}
 		}
 	}
 });
