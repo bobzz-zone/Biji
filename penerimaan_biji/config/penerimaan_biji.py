@@ -11,7 +11,7 @@ def get_data():
 				},
 				{
 					"type": "doctype",
-					"name": "Mutasi Biji",
+					"name": "Mutasi Bijih",
 				},
 				{
 					"type": "doctype",
@@ -23,7 +23,7 @@ def get_data():
 				},
 				{
 					"type": "doctype",
-					"name": "Pengolahan Biji",
+					"name": "Pengolahan Bijih",
 				},
 				{
 					"type": "doctype",
