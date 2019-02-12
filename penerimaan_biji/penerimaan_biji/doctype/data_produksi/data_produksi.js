@@ -9,14 +9,21 @@ cur_frm.add_fetch("batch", "id_alat", "id_alat");
 
 frappe.ui.form.on('Data Produksi', {
         validate: function(frm){
-                frm.doc.total=0;
-                if (frm.doc.sn_def!=null && frm.doc.sn_def>0){
-                        frm.doc.total = frm.doc.qty * frm.doc.sn_def;
-                }else if (frm.doc.sn_tak!=null && frm.doc.sn_tak>0){
-                        frm.doc.total = frm.doc.qty * frm.doc.sn_tak;
-                }else if (frm.doc.sn_est!=null && frm.doc.sn_est>0){
-                        frm.doc.total = frm.doc.qty * frm.doc.sn_est;
-                }
-                frm.refresh_field("total");
+        	if (frm.doc.status=="Closed"){
+        		frappe.throw("Data Produksi Sudah Tidak Boleh di Update");
+        		return false;
+        	}
+            frm.doc.total=0;
+            if (frm.doc.sn_def!=null && frm.doc.sn_def>0){
+                    frm.doc.total = frm.doc.qty * frm.doc.sn_def;
+            }else if (frm.doc.sn_tak!=null && frm.doc.sn_tak>0){
+                    frm.doc.total = frm.doc.qty * frm.doc.sn_tak;
+            }else if (frm.doc.sn_est!=null && frm.doc.sn_est>0){
+                    frm.doc.total = frm.doc.qty * frm.doc.sn_est;
+            }
+            frm.refresh_field("total");
+        },refresh:function(frm){
+        	frm.set_df_property("batch", "read_only", frm.doc.__islocal ? 0 : 1);
         }
+
 });
