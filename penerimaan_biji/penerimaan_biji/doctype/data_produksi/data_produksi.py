@@ -15,14 +15,14 @@ class DataProduksi(Document):
 		batch = frappe.get_doc("Kode Batch",self.batch)
 		if batch.status == "Closed" :
 			frappe.throw("Batch Sudah tidak bisa di pakai untuk produksi")
-		data = frappe.db.sql("""select qty,total from `tabData Produksi` where name="{}" """.format(self.name),as_list=1)
+		data = frappe.db.sql("""select sum(qty),sum(total) from `tabData Produksi` where batch="{}" group by batch """.format(self.batch),as_list=1)
 		qty_old = 0
 		total_old = 0
 		for row in data:
 			qty_old = row[0]
 			total_old = row[1]
-		batch.produksi_total = batch.total+self.total - total_old 
-		batch.total = batch.total+self.qty - qty_old
+		batch.produksi_total =  total_old 
+		batch.total = qty_old
 		batch.ton_def=batch.sn_def*batch.total
 		batch.ton_tak=batch.sn_tak*batch.total
 		batch.ton_est=batch.sn_est*batch.total
