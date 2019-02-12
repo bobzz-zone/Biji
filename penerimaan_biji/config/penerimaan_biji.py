@@ -95,6 +95,10 @@ def get_data():
 				{
 					"type": "doctype",
 					"name": "Kelas",
+				},
+				{
+					"type": "doctype",
+					"name": "Staff",
 				}
 			]
 		},
