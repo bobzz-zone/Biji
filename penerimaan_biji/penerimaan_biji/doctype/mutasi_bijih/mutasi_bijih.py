@@ -26,6 +26,8 @@ class MutasiBijih(Document):
 			reason= "Ada Penerimaan"
 		if last == self.aktivitas:
 			frappe.throw("Tidak bisa melakukan {} karena belum {}".format(last,reason))
+	def on_cancel(self):
+		frappe.throw("Dokumen tidak dapat di batalkan")
 	def on_submit(self):
 		if self.aktivitas == "Penerimaan":
 			batch=frappe.get_doc("Kode Batch",self.batch)
