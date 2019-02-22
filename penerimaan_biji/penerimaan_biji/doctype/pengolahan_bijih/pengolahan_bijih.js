@@ -6,7 +6,7 @@ frappe.ui.form.on('Pengolahan Bijih', {
 
 	},
 	on_load: function(frm) {
-		cur_frm.set_query("batch", function() {
+		frm.set_query("batch", function() {
 			return {
 					"filters": {
 						"used": "0",
@@ -17,7 +17,7 @@ frappe.ui.form.on('Pengolahan Bijih', {
 	},
 	type : function(frm){
 		if(frm.doc.type == "Input"){
-			cur_frm.set_query("batch", function() {
+			frm.set_query("batch", function() {
 			return {
 					"filters": {
 						"used": "0",
@@ -27,7 +27,7 @@ frappe.ui.form.on('Pengolahan Bijih', {
 			});		
 		}
 		else {
-			cur_frm.set_query("batch", function() {
+			frm.set_query("batch", function() {
 			return {
 					"filters": {
 						"used": "1",
