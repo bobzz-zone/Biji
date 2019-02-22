@@ -38,4 +38,4 @@ def close_batch(name):
 	doc.closing = now()
 	doc.status = "Closed"
 	doc.save()
-	frappe.db.sql("""update `tabData Produksi` set status = "Closed" where batch = "{}" """.format(nama))
+	frappe.db.sql("""update `tabData Produksi` set status = "Closed" where batch = "{}" """.format(name))
