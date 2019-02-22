@@ -9,10 +9,11 @@ from frappe.model.document import Document
 class ProcessOrder(Document):
 	pass
 	def on_update(self):
-		tin=0
-		tou=0
-		for row in self.batch_list:
-			tin = tin + row.total
-			tou = tou + row.output
-			row.recovery = (row.total / row.output)*100
-		self.recovery = (tin / tou)*100
+		if self.docstatus==1:
+			tin=0
+			tou=0
+			for row in self.batch_list:
+				tin = tin + row.total
+				tou = tou + row.output
+				row.recovery = (row.total / row.output)*100
+			self.recovery = (tin / tou)*100
