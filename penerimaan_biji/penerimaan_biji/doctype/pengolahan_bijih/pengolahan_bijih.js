@@ -9,7 +9,8 @@ frappe.ui.form.on('Pengolahan Bijih', {
 		cur_frm.set_query("batch", function() {
 			return {
 					"filters": {
-						"used": "0"
+						"used": "0",
+						"status": "Closed"
 					}
 				};
 		});
@@ -19,7 +20,8 @@ frappe.ui.form.on('Pengolahan Bijih', {
 			cur_frm.set_query("batch", function() {
 			return {
 					"filters": {
-						"used": "0"
+						"used": "0",
+						"status": "Closed"
 					}
 				};
 			});		
@@ -28,7 +30,8 @@ frappe.ui.form.on('Pengolahan Bijih', {
 			cur_frm.set_query("batch", function() {
 			return {
 					"filters": {
-						"used": "1"
+						"used": "1",
+						"status": "Closed"
 					}
 				};
 			});		
