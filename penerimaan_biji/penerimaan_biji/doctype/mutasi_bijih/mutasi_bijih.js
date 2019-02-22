@@ -21,6 +21,8 @@ frappe.ui.form.on('Mutasi Bijih', {
 					}
 				};
 		});
+		frm.set_df_property("sn_tak", "read_only", frm.doc.docstatus==1);
+		frm.set_df_property("sn_def", "read_only", frm.doc.docstatus==1);
 	},
 	bruto: function(frm) {
 		netto_calc(frm);
