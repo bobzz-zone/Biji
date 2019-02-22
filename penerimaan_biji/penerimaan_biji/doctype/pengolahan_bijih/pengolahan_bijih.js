@@ -5,7 +5,7 @@ frappe.ui.form.on('Pengolahan Bijih', {
 	refresh: function(frm) {
 
 	},
-	on_load: function(frm) {
+	onload: function(frm) {
 		frm.set_query("batch", function() {
 			return {
 					"filters": {

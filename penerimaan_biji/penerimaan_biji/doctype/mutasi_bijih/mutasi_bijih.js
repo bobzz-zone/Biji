@@ -13,11 +13,11 @@ cur_frm.add_fetch("batch", "total", "qty");
 cur_frm.add_fetch("batch", "total_final", "total");
 cur_frm.add_fetch("to_loc", "type", "type");
 frappe.ui.form.on('Mutasi Bijih', {
-	on_load: function(frm) {
+	onload: function(frm) {
 		cur_frm.set_query("batch", function() {
 			return {
 					"filters": {
-					"status": "Closed"
+						"status": "Closed"
 					}
 				};
 		});

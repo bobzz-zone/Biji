@@ -14,7 +14,7 @@ cur_frm.add_fetch("saksi3_nama", "email", "email3");
 cur_frm.add_fetch("saksi3_nama", "sign", "saksi3_sign");
 cur_frm.add_fetch("vendor", "vendor", "penyedia_jasa_nama");
 frappe.ui.form.on('BAP', {
-	on_load : function(frm) {
+	onload : function(frm) {
 		cur_frm.set_query("batch", function() {
 			return {
 					"filters": {
