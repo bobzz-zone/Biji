@@ -9,7 +9,7 @@ frappe.ui.form.on('Pengolahan Bijih', {
 		cur_frm.set_query("batch", function() {
 			return {
 					"filters": {
-					"used": "0"
+						"used": "0"
 					}
 				};
 		});
@@ -19,7 +19,7 @@ frappe.ui.form.on('Pengolahan Bijih', {
 			cur_frm.set_query("batch", function() {
 			return {
 					"filters": {
-					"used": "0"
+						"used": "0"
 					}
 				};
 			});		
@@ -28,13 +28,13 @@ frappe.ui.form.on('Pengolahan Bijih', {
 			cur_frm.set_query("batch", function() {
 			return {
 					"filters": {
-					"used": "1"
+						"used": "1"
 					}
 				};
 			});		
 		}
-	}
-bruto: function(frm) {
+	},
+	bruto: function(frm) {
 		netto_calc(frm);
 	},
 	tara: function(frm) {
