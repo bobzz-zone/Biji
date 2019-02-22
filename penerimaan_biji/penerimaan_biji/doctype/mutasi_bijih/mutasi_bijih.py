@@ -13,7 +13,7 @@ class MutasiBijih(Document):
 			frappe.throw("SN Taksasi tidak boleh berubah")
 		if batch.def_percent and batch.def_percent!=self.sn_def:
 			frappe.throw("SN Definitif tidak boleh berubah")
-		data = frappe.db.sql("select name , aktivitas from `tabMutasi Bijih` order by date desc limit 0,1")
+		data = frappe.db.sql("select name , aktivitas from `tabMutasi Bijih` where docstatus=1 order by date desc limit 0,1")
 		last = "Penerimaan"
 		num = 0
 		for row in data:
