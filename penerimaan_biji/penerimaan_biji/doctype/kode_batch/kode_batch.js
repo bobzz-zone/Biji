@@ -7,6 +7,7 @@ cur_frm.add_fetch("id_alat", "kelas", "kelas");
 frappe.ui.form.on('Kode Batch', {
 	refresh: function(frm) {
 		frm.set_df_property("sn_est", "read_only", frm.doc.__islocal ? 0 : 1);
+		frm.set_df_property("s_loc", "read_only", frm.doc.docstatus==1);
 		if(frm.doc.docstatus==1 && frm.doc.status == "Open") {
 			frm.add_custom_button(__('Close'), function () {
 				var doc = frm.doc;
