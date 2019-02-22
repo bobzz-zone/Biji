@@ -5,7 +5,7 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
-from frappe.utils import now_datetime
+from frappe.utils import now_datetime,cint
 class BAP(Document):
 	def autoname(self):
 		today = now_datetime()
