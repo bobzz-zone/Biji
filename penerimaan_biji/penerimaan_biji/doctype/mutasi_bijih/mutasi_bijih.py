@@ -17,7 +17,7 @@ class MutasiBijih(Document):
 		last = "Penerimaan"
 		num = 0
 		for row in data:
-			last = data[1]
+			last = row[1]
 			num= num+1
 		reason = "Ada Aktifitas Sebelumya , Sehingga hanya bisa melakukan Pengiriman"
 		if num > 0 and last == "Penerimaan":
