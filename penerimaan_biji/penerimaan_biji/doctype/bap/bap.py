@@ -53,7 +53,7 @@ class BAP(Document):
 			"sn_est":batch.sn_tak,
 			"sn_est":batch.sn_def,
 			"total":x,
-			"status":"closed"
+			"status":"Closed"
 		})
 
 		doc.insert()
