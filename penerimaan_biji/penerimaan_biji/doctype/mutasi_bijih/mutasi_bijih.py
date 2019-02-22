@@ -53,5 +53,5 @@ class MutasiBijih(Document):
 				kadar = batch.sn_tak
 				if self.sn_def:
 					kadar=batch.sn_def
-				frappe.db.sql("""update `tabData Produksi` set sn_tak="{}" , sn_def="{}" , total="{}" where name={} """.format(self.sn_tak,self.sn_def,cint(row[1])*kadar,row[0]))
+				frappe.db.sql("""update `tabData Produksi` set sn_tak="{}" , sn_def="{}" , total="{}" where name="{}" """.format(self.sn_tak,self.sn_def,cint(row[1])*kadar,row[0]))
 
