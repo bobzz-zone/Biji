@@ -14,7 +14,7 @@ class PengirimanBatch(Document):
 			batch=frappe.get_doc("Kode Batch",row.batch)
 			total = row.total
 			if batch.jalan==1 or batch.used==1 or batch.status=="Open":
-				frappe.throw("{} Tidak bisa di lakukan pengiriman".fomat(batch.name))
+				frappe.throw("Batch {} Tidak bisa di lakukan pengiriman".format(batch.name))
 		self.input=total
 		
 	def on_cancel(self):
