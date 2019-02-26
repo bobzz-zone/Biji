@@ -4,7 +4,7 @@
 frappe.ui.form.on('Pengiriman Batch', {
 	refresh: function(frm) {
 		cur_frm.add_fetch("batch", "total", "total");
-		cur_frm.set_query("batch", function() {
+		cur_frm.set_query("batch", "batch_list", function(doc, cdt, cdn) {
 			return {
 					"filters": {
 						"status": "Closed",
