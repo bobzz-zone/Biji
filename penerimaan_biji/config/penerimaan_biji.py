@@ -15,6 +15,14 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+					"name": "Pengiriman Batch",
+				},
+				{
+					"type": "doctype",
+					"name": "Penerimaan Batch",
+				},
+				{
+					"type": "doctype",
 					"name": "BAP",
 				},
 				{

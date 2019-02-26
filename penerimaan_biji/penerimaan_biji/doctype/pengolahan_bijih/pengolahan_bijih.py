@@ -22,8 +22,8 @@ class PengolahanBijih(Document):
 			frappe.db.sql("""update `tabKode Batch` set used = 0 where name={}""".format(self.batch))
 			batch=frappe.get_doc("Kode Batch",self.batch)
 			batch.ton_final=self.total
-			batch.save()
-		po.save()
+			batch.save(ignore_permissions=1)
+		po.save(ignore_permissions=1)
 	def on_cancel(self):
 		frappe.throw("Dokumen tidak dapat di batalkan")
 			
