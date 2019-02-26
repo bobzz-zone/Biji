@@ -4,7 +4,6 @@
 frappe.ui.form.on('Pengiriman Batch', {
 	refresh: function(frm) {
 		cur_frm.add_fetch("batch", "total", "total");
-	},onload: function(frm) {
 		cur_frm.set_query("batch", function() {
 			return {
 					"filters": {
