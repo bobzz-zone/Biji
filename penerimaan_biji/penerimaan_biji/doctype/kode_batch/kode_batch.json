@@ -107,7 +107,7 @@
   }, 
   {
    "allow_bulk_edit": 0, 
-   "allow_on_submit": 0, 
+   "allow_on_submit": 1, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
@@ -1306,7 +1306,7 @@
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
- "modified": "2019-02-12 15:20:47.375148", 
+ "modified": "2019-02-22 13:28:48.328848", 
  "modified_by": "Administrator", 
  "module": "Penerimaan Biji", 
  "name": "Kode Batch", 
