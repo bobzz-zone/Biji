@@ -12,7 +12,7 @@ class PengirimanBatch(Document):
 		total = 0
 		for row in self.batch_list:
 			batch=frappe.get_doc("Kode Batch",row.batch)
-			total = row.input
+			total = row.total
 			if batch.jalan==1 or batch.used==1 or batch.status=="Open":
 				frappe.throw("{} Tidak bisa di lakukan pengiriman".fomat(batch.name))
 		self.input=total
@@ -22,7 +22,7 @@ class PengirimanBatch(Document):
 	def on_submit(self):
 		total = 0
 		for row in self.batch_list:
-			total = row.input
+			total = row.total
 			batch=frappe.get_doc("Kode Batch",row.batch)
 			batch.jalan=1
 			batch.save(ignore_permissions=1)
