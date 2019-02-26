@@ -5,6 +5,12 @@ cur_frm.add_fetch("batch", "unit_produksi", "unit_produksi");
 cur_frm.add_fetch("batch", "badan_usaha", "badan_usaha");
 cur_frm.add_fetch("batch", "kelas", "kelas");
 cur_frm.add_fetch("batch", "s_loc", "from_loc");
+cur_frm.add_fetch("batch", "lokasi_simpan", "nama_lokasi_sebelumnya");
+cur_frm.add_fetch("batch", "type_simpan", "type_lokasi_sebelumnya");
+cur_frm.add_fetch("batch", "jalan_temp", "to_loc");
+cur_frm.add_fetch("batch", "lokasi_temp", "lokasi_to");
+cur_frm.add_fetch("batch", "type_temp", "type");
+
 cur_frm.add_fetch("batch", "satuan", "satuan");
 cur_frm.add_fetch("batch", "id_alat", "id_alat");
 cur_frm.add_fetch("batch", "sn_est", "sn_est");
@@ -12,7 +18,6 @@ cur_frm.add_fetch("batch", "tak_percent", "sn_tak");
 cur_frm.add_fetch("batch", "def_percent", "sn_def");
 cur_frm.add_fetch("batch", "total", "qty");
 cur_frm.add_fetch("batch", "total_final", "total");
-cur_frm.add_fetch("to_loc", "type", "type");
 frappe.ui.form.on('Penerimaan Batch', {
 	onload: function(frm) {
 		cur_frm.set_query("batch", function() {

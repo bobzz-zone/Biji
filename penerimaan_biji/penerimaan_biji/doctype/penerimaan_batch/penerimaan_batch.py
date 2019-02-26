@@ -35,7 +35,12 @@ class PenerimaanBatch(Document):
 		elif self.type == "GMP":
 			batch.gmp_total = self.total
 		batch.s_loc = self.to_loc
+		batch.nama_lokasi_sebelumnya=self.lokasi_to
+		batch.type_lokasi_sebelumnya=self.type
 		batch.jalan=0
+		batch.jalan_temp=""
+		batch.lokasi_temp=""
+		batch.type_temp=""
 		batch.save(ignore_permissions=1)
 		list_dp = frappe.db.sql("""select name , qty from `tabData Produksi` where batch="{}" and (sn_def is NULL or sn_def=0) and (sn_tak is NULL or sn_tak=0) """.format(self.batch),as_list=1)
 		for row in list_dp:
