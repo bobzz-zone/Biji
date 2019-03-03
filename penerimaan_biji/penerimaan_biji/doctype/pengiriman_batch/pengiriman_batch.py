@@ -25,5 +25,8 @@ class PengirimanBatch(Document):
 			total = row.total
 			batch=frappe.get_doc("Kode Batch",row.batch)
 			batch.jalan=1
+			batch.lokasi_temp=self.lokasi
+			batch.jalan_temp=self.s_loc
+			batch.type_temp=self.type
 			batch.save(ignore_permissions=1)
 		self.input=total
