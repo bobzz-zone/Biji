@@ -11,10 +11,6 @@ def get_data():
 				},
 				{
 					"type": "doctype",
-					"name": "Mutasi Bijih",
-				},
-				{
-					"type": "doctype",
 					"name": "Pengiriman Batch",
 				},
 				{
