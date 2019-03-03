@@ -53,11 +53,19 @@ class BAP(Document):
 			"sn_est":batch.sn_tak,
 			"sn_est":batch.sn_def,
 			"total":x,
-			"status":"Closed"
+			"status":"Open"
 		})
 
 		doc.insert()
 		self.data_produksi=doc.name
+		frappe.db.sql("""UPDATE `tabBAP` SET data_produksi ="{}" WHERE name = "{}" """.format(doc.name,self.name))
+		frappe.db.commit()
+		frappe.db.sql("""UPDATE `tabData Produksi` SET status ="Closed" WHERE name = "{}" """.format(doc.name))
+		frappe.db.commit()
 	def on_cancel(self):
-		doc=frappe.get_doc("Data Produksi",self.data_produksi)
-		doc.cancel(ignore_permissions=True)
+		# doc=frappe.get_doc("Data Produksi",self.data_produksi)
+		# if doc:
+		# 	doc.flags.ignore_permissions = True
+		# 	doc.cancel()
+		pass
+		# data produksi tidak ada cancel2an bro. Open dan Closed bukan ganti docstatus
