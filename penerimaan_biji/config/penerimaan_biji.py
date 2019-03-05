@@ -3,7 +3,7 @@ from frappe import _
 def get_data():
 	return [
 		{
-			"label": _("Transaksi Biji"),
+			"label": _("Transaksi Bijih"),
 			"items": [
 				{
 					"type": "doctype",
