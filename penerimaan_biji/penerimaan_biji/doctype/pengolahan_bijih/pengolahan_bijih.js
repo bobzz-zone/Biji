@@ -15,6 +15,33 @@ cur_frm.add_fetch("batch", "sn_est", "sn_est");
 cur_frm.add_fetch("batch", "tak_percent", "sn_tak");
 cur_frm.add_fetch("batch", "def_percent", "sn_def");
 cur_frm.add_fetch("batch", "total", "qty");
+
+
+frappe.ui.form.on("Pengolahan Bijih", "batch", function(frm) {
+	if (frm.doc.batch){
+    frappe.call({
+        "method": "frappe.client.get",
+        "args": {
+             "doctype": "Kode Batch",
+             "name": frm.doc.batch
+        },
+        "callback": function(response) {
+             var batch = response.message;
+             if (batch) {
+             	  if (frm.doc.type == "Input"){
+             	  	frm.set_value('qty', batch.total);
+             	  } 
+             	  else{
+             	  	frm.set_value('qty', 0);
+             	  }
+             }
+             else{
+             	  	frm.set_value('qty', 0);
+             } 
+        }
+    }); }
+});
+
 cur_frm.add_fetch("batch", "total_final", "total");
 
 cur_frm.add_fetch("batch", "tara", "tara");
@@ -49,6 +76,7 @@ frappe.ui.form.on('Pengolahan Bijih', {
 			});	
 		}
 		else {
+			frm.set_value('qty', 0);
 			frm.set_query("batch", function() {
 			return {
 					"filters": {
