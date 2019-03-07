@@ -12,44 +12,20 @@ cur_frm.add_fetch("batch", "badan_usaha", "badan_usaha");
 cur_frm.add_fetch("batch", "satuan", "satuan");
 
 cur_frm.add_fetch("batch", "sn_est", "sn_est");
-cur_frm.add_fetch("batch", "tak_percent", "sn_tak");
-cur_frm.add_fetch("batch", "def_percent", "sn_def");
-cur_frm.add_fetch("batch", "total", "qty");
+//cur_frm.add_fetch("batch", "tak_percent", "sn_tak");
+//cur_frm.add_fetch("batch", "def_percent", "sn_def");
+//cur_frm.add_fetch("batch", "total", "qty");
 
 
-frappe.ui.form.on("Pengolahan Bijih", "batch", function(frm) {
-	if (frm.doc.batch){
-    frappe.call({
-        "method": "frappe.client.get",
-        "args": {
-             "doctype": "Kode Batch",
-             "name": frm.doc.batch
-        },
-        "callback": function(response) {
-             var batch = response.message;
-             if (batch) {
-             	  if (frm.doc.type == "Input"){
-             	  	frm.set_value('qty', batch.total);
-             	  } 
-             	  else{
-             	  	frm.set_value('qty', 0);
-             	  }
-             }
-             else{
-             	  	frm.set_value('qty', 0);
-             } 
-        }
-    }); }
-});
 
-cur_frm.add_fetch("batch", "total_final", "total");
+// cur_frm.add_fetch("batch", "total_final", "total");
 
-cur_frm.add_fetch("batch", "tara", "tara");
-cur_frm.add_fetch("batch", "kadar_air", "kadar_air");
-cur_frm.add_fetch("batch", "berat_air", "berat_air");
-cur_frm.add_fetch("batch", "berat_ore", "berat_ore");
-cur_frm.add_fetch("batch", "netto", "netto");
-cur_frm.add_fetch("batch", "bruto", "bruto");
+// cur_frm.add_fetch("batch", "tara", "tara");
+// cur_frm.add_fetch("batch", "kadar_air", "kadar_air");
+// cur_frm.add_fetch("batch", "berat_air", "berat_air");
+// cur_frm.add_fetch("batch", "berat_ore", "berat_ore");
+// cur_frm.add_fetch("batch", "netto", "netto");
+// cur_frm.add_fetch("batch", "bruto", "bruto");
 frappe.ui.form.on('Pengolahan Bijih', {
 	refresh: function(frm) {
 
@@ -91,6 +67,10 @@ frappe.ui.form.on('Pengolahan Bijih', {
 		frm.set_df_property("tara", "read_only", frm.doc.type=="Input");
 		frm.set_df_property("sn_tak", "read_only", frm.doc.type=="Input");
 		frm.set_df_property("sn_def", "read_only", frm.doc.type=="Input");
+		get_batch_value(frm);
+	},
+	batch: function(frm) {
+		get_batch_value(frm);
 	},
 	bruto: function(frm) {
 		netto_calc(frm);
@@ -108,7 +88,57 @@ frappe.ui.form.on('Pengolahan Bijih', {
 		netto_calc(frm);
 	}
 });
-
+function get_batch_value(frm){
+	if (frm.doc.batch){
+    frappe.call({
+        "method": "frappe.client.get",
+        "args": {
+             "doctype": "Kode Batch",
+             "name": frm.doc.batch
+        },
+        "callback": function(response) {
+             var batch = response.message;
+             if (batch) {
+             	  if (frm.doc.type == "Input"){
+             	  	frm.set_value('qty', batch.total);
+             	  	frm.set_value('sn_tak', batch.tak_percent);
+             	  	frm.set_value('tak_percent', batch.def_percent);
+             	  	frm.set_value('tara', batch.tara);
+             	  	frm.set_value('kadar_air', batch.kadar_air);
+             	  	frm.set_value('berat_air', batch.berat_air);
+             	  	frm.set_value('berat_ore', batch.berat_ore);
+             	  	frm.set_value('netto', batch.netto);
+             	  	frm.set_value('bruto', batch.bruto);
+             	  	frm.set_value('total', batch.total_final);
+             	  } 
+             	  else{
+             	  	frm.set_value('qty', 0);
+             	  	frm.set_value('sn_tak', 0);
+             	  	frm.set_value('tak_percent', 0);
+             	  	frm.set_value('tara', 0);
+             	  	frm.set_value('kadar_air', 0);
+             	  	frm.set_value('berat_air', 0);
+             	  	frm.set_value('berat_ore', 0);
+             	  	frm.set_value('netto', 0);
+             	  	frm.set_value('bruto', 0);
+             	  	frm.set_value('total', 0);
+             	  }
+             }
+             else{
+             	  	frm.set_value('qty', 0);
+             	  	frm.set_value('sn_tak', 0);
+             	  	frm.set_value('tak_percent', 0);
+             	  	frm.set_value('tara', 0);
+             	  	frm.set_value('kadar_air', 0);
+             	  	frm.set_value('berat_air', 0);
+             	  	frm.set_value('berat_ore', 0);
+             	  	frm.set_value('netto', 0);
+             	  	frm.set_value('bruto', 0);
+             	  	frm.set_value('total', 0);
+             } 
+        }
+    }); }
+}
 function netto_calc(frm){
 	var br = 0;
 	var ta = 0;
