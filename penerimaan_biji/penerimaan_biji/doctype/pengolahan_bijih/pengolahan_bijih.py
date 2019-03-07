@@ -22,6 +22,20 @@ class PengolahanBijih(Document):
 			frappe.db.sql("""update `tabKode Batch` set used = 0 where name={}""".format(self.batch))
 			batch=frappe.get_doc("Kode Batch",self.batch)
 			batch.ton_final=self.total
+			batch.tara=self.tara
+			batch.kadar_air=self.kadar_air
+			batch.berat_air = self.berat_air
+			batch.netto = self.netto
+			batch.berat_ore = self.berat_ore
+			batch.bruto = self.bruto
+			if not batch.sn_tak:
+				if self.sn_tak :
+					batch.sn_tak = self.berat_ore * self.sn_tak / self.qty
+					batch.tak_percent = self.sn_tak
+			if not batch.sn_def:
+				if self.sn_def:
+					batch.sn_def = self.berat_ore * self.sn_def / self.qty
+					batch.def_percent = self.sn_def
 			batch.save(ignore_permissions=1)
 		po.save(ignore_permissions=1)
 	def on_cancel(self):

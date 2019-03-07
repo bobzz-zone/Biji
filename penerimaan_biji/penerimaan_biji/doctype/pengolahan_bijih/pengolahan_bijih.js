@@ -1,6 +1,28 @@
 // Copyright (c) 2019, PT DAS and contributors
 // For license information, please see license.txt
+cur_frm.add_fetch("batch", "objek_produksi", "kode_objek");
+cur_frm.add_fetch("batch", "id_alat", "id_alat");
 
+cur_frm.add_fetch("batch", "kelas", "kelas");
+
+cur_frm.add_fetch("batch", "unit_produksi", "unit_produksi");
+
+cur_frm.add_fetch("batch", "badan_usaha", "badan_usaha");
+
+cur_frm.add_fetch("batch", "satuan", "satuan");
+
+cur_frm.add_fetch("batch", "sn_est", "sn_est");
+cur_frm.add_fetch("batch", "tak_percent", "sn_tak");
+cur_frm.add_fetch("batch", "def_percent", "sn_def");
+cur_frm.add_fetch("batch", "total", "qty");
+cur_frm.add_fetch("batch", "total_final", "total");
+
+cur_frm.add_fetch("batch", "tara", "tara");
+cur_frm.add_fetch("batch", "kadar_air", "kadar_air");
+cur_frm.add_fetch("batch", "berat_air", "berat_air");
+cur_frm.add_fetch("batch", "berat_ore", "berat_ore");
+cur_frm.add_fetch("batch", "netto", "netto");
+cur_frm.add_fetch("batch", "bruto", "bruto");
 frappe.ui.form.on('Pengolahan Bijih', {
 	refresh: function(frm) {
 
@@ -24,7 +46,7 @@ frappe.ui.form.on('Pengolahan Bijih', {
 						"status": "Closed"
 					}
 				};
-			});		
+			});	
 		}
 		else {
 			frm.set_query("batch", function() {
@@ -36,6 +58,11 @@ frappe.ui.form.on('Pengolahan Bijih', {
 				};
 			});		
 		}
+		frm.set_df_property("kadar_air", "read_only", frm.doc.type=="Input");
+		frm.set_df_property("bruto", "read_only", frm.doc.type=="Input");
+		frm.set_df_property("tara", "read_only", frm.doc.type=="Input");
+		frm.set_df_property("sn_tak", "read_only", frm.doc.type=="Input");
+		frm.set_df_property("sn_def", "read_only", frm.doc.type=="Input");
 	},
 	bruto: function(frm) {
 		netto_calc(frm);
@@ -53,7 +80,6 @@ frappe.ui.form.on('Pengolahan Bijih', {
 		netto_calc(frm);
 	}
 });
-
 
 function netto_calc(frm){
 	var br = 0;

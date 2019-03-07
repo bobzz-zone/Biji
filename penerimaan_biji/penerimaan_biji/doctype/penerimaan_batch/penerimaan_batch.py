@@ -34,6 +34,12 @@ class PenerimaanBatch(Document):
 			batch.gbt_total = self.total
 		elif self.type == "GMP":
 			batch.gmp_total = self.total
+		batch.tara=self.tara
+		batch.kadar_air=self.kadar_air
+		batch.berat_air = self.berat_air
+		batch.netto = self.netto
+		batch.berat_ore = self.berat_ore
+		batch.bruto = self.bruto
 		batch.s_loc = self.to_loc
 		batch.nama_lokasi_sebelumnya=self.lokasi_to
 		batch.type_lokasi_sebelumnya=self.type
