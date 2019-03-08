@@ -16,10 +16,10 @@ class PengolahanBijih(Document):
 	def on_submit(self):
 		po=frappe.get_doc("Process Order",self.po)
 		if self.type == "Input":
-			frappe.db.sql("""update `tabKode Batch` set used = 1 where name={}""".format(self.batch))
+			frappe.db.sql("""update `tabKode Batch` set used = 1 where name="{}" """.format(self.batch))
 			po.append("batch_list",{"doctype":"Process Order Batch","batch":self.batch,"total":self.total})
 		if self.type == "Output":
-			frappe.db.sql("""update `tabKode Batch` set used = 0 where name={}""".format(self.batch))
+			frappe.db.sql("""update `tabKode Batch` set used = 0 where name="{}" """.format(self.batch))
 			batch=frappe.get_doc("Kode Batch",self.batch)
 			batch.ton_final=self.total
 			batch.tara=self.tara
