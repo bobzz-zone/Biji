@@ -23,6 +23,9 @@ frappe.ui.form.on('BAP', {
 				};
 		});
 	},
+	refresh: function(frm): {
+		frm.set_df_property("unit_produksi", "read_only", frm.doc.__islocal ? 0 : 1);
+	},
 	bruto: function(frm) {
 		if (frm.doc.tara){
 			frm.doc.netto = frm.doc.bruto - frm.doc.tara;

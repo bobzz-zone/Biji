@@ -13,7 +13,7 @@ class PenerimaanBatch(Document):
 			frappe.throw("SN Taksasi tidak boleh berubah")
 		if batch.def_percent and batch.def_percent!=self.sn_def:
 			frappe.throw("SN Definitif tidak boleh berubah")
-		if batch.jalan or batch.jalan==0:
+		if batch.jalan==0:
 			frappe.throw("Batch Tidak dalam proses kirim tidak bisa di terima")
 	def on_cancel(self):
 		frappe.throw("Dokumen tidak dapat di batalkan")
