@@ -47,6 +47,7 @@ class PenerimaanBatch(Document):
 		batch.jalan_temp=""
 		batch.lokasi_temp=""
 		batch.type_temp=""
+		batch.calculate()
 		batch.save(ignore_permissions=1)
 		list_dp = frappe.db.sql("""select name , qty from `tabData Produksi` where batch="{}" and (sn_def is NULL or sn_def=0) and (sn_tak is NULL or sn_tak=0) """.format(self.batch),as_list=1)
 		for row in list_dp:
