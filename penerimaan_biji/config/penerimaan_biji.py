@@ -3,7 +3,7 @@ from frappe import _
 def get_data():
 	return [
 		{
-			"label": _("Transaksi Bijih"),
+			"label": _("Produksi Bijih"),
 			"items": [
 				{
 					"type": "doctype",
@@ -37,15 +37,6 @@ def get_data():
 					"type": "doctype",
 					"name": "Kode Batch",
 				},
-			]
-		},
-		{
-			"label": _("Transaksi Logam"),
-			"items": [
-				{
-					"type": "doctype",
-					"name": "Produksi Logam",
-				}
 			]
 		},
 		{
