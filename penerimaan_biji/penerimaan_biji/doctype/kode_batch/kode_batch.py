@@ -29,7 +29,7 @@ class KodeBatch(Document):
 		else:
 			self.ton_def=0
 		if self.status=="Open":
-			self.ton_final=self.ton_est
+			self.total_final=self.ton_est
 		
 		
 @frappe.whitelist()
