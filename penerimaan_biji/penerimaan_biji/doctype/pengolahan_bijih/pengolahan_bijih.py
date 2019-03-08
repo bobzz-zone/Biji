@@ -36,6 +36,7 @@ class PengolahanBijih(Document):
 				if self.sn_def:
 					batch.sn_def = self.berat_ore * self.sn_def / self.qty
 					batch.def_percent = self.sn_def
+			batch.calculate()
 			batch.save(ignore_permissions=1)
 		po.save(ignore_permissions=1)
 	def on_cancel(self):

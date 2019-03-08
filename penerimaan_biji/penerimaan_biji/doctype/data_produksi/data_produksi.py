@@ -26,6 +26,7 @@ class DataProduksi(Document):
 		batch.ton_def=batch.sn_def*batch.total
 		batch.ton_tak=batch.sn_tak*batch.total
 		batch.ton_est=batch.sn_est*batch.total
+		batch.calculate()
 		batch.save(ignore_permissions=True)
 	def on_delete(self):
 		batch = frappe.get_doc("Kode Batch",self.batch)
@@ -35,4 +36,5 @@ class DataProduksi(Document):
 		batch.ton_def=batch.sn_def*batch.total
 		batch.ton_tak=batch.sn_tak*batch.total
 		batch.ton_est=batch.sn_est*batch.total
+		batch.calculate()
 		batch.save(ignore_permissions=True)

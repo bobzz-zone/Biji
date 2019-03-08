@@ -13,7 +13,7 @@ class KodeBatch(Document):
 			frappe.throw("Data Batch Sudah Tidak Boleh di Update")
 	def autoname(self):
 		self.name=make_autoname("{}.YY.###".format(self.s_loc),doc=self)
-	def on_update(self):
+	def calculate(self):
 		if self.sn_est and self.sn_est>0:
 			self.ton_est=self.sn_est*self.total
 		else:

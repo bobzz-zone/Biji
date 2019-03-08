@@ -28,5 +28,6 @@ class PengirimanBatch(Document):
 			batch.lokasi_temp=self.lokasi
 			batch.jalan_temp=self.s_loc
 			batch.type_temp=self.type
+			batch.calculate()
 			batch.save(ignore_permissions=1)
 		self.input=total
