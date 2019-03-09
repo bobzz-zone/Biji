@@ -69,5 +69,6 @@ class BAP(Document):
 		# 	doc.cancel()
 		pass
 		# data produksi tidak ada cancel2an bro. Open dan Closed bukan ganti docstatus
+@frappe.whitelist()
 def get_harga():
 	return frappe.db.get_single_value("SIP Settings","harga")
