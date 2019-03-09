@@ -14,7 +14,7 @@ cur_frm.add_fetch("saksi3_nama", "email", "email3");
 cur_frm.add_fetch("saksi3_nama", "sign", "saksi3_sign");
 cur_frm.add_fetch("vendor", "vendor", "penyedia_jasa_nama");
 frappe.ui.form.on('BAP', {
-	onload : function(frm) {
+	onload: function(frm) {
 		cur_frm.set_query("batch", function() {
 			return {
 					"filters": {
@@ -23,7 +23,7 @@ frappe.ui.form.on('BAP', {
 				};
 		});
 	},
-	refresh: function(frm): {
+	refresh: function(frm) {
 		frm.set_df_property("unit_produksi", "read_only", frm.doc.__islocal ? 0 : 1);
 	},
 	bruto: function(frm) {
