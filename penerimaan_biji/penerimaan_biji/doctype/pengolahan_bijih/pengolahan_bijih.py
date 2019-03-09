@@ -30,11 +30,11 @@ class PengolahanBijih(Document):
 			batch.bruto = self.bruto
 			if not batch.sn_tak:
 				if self.sn_tak :
-					batch.sn_tak = self.berat_ore * self.sn_tak / self.qty
+					batch.sn_tak = self.berat_ore * self.sn_tak / self.qty / 100
 					batch.tak_percent = self.sn_tak
 			if not batch.sn_def:
 				if self.sn_def:
-					batch.sn_def = self.berat_ore * self.sn_def / self.qty
+					batch.sn_def = self.berat_ore * self.sn_def / self.qty /100
 					batch.def_percent = self.sn_def
 			batch.calculate()
 			batch.save(ignore_permissions=1)

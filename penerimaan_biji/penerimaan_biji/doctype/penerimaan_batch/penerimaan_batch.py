@@ -21,11 +21,11 @@ class PenerimaanBatch(Document):
 		batch=frappe.get_doc("Kode Batch",self.batch)
 		if not batch.sn_tak:
 			if self.sn_tak :
-				batch.sn_tak = self.berat_ore * self.sn_tak / self.qty
+				batch.sn_tak = self.berat_ore * (self.sn_tak/100) / self.qty
 				batch.tak_percent = self.sn_tak
 		if not batch.sn_def:
 			if self.sn_def:
-				batch.sn_def = self.berat_ore * self.sn_def / self.qty
+				batch.sn_def = self.berat_ore * (self.sn_def/100) / self.qty
 				batch.def_percent = self.sn_def
 		batch.ton_final=self.total
 		if self.type == "PPBT" or self.type == "BPM" :
@@ -55,4 +55,4 @@ class PenerimaanBatch(Document):
 			kadar = batch.sn_tak
 			if self.sn_def:
 				kadar=batch.sn_def
-				frappe.db.sql("""update `tabData Produksi` set sn_tak="{}" , sn_def="{}" , total="{}" where name="{}" """.format(self.sn_tak,self.sn_def,cint(row[1])*kadar,row[0]))
+			frappe.db.sql("""update `tabData Produksi` set sn_tak="{}" , sn_def="{}" , total="{}" where name="{}" """.format(batch.sn_tak,batch.sn_def,cint(row[1])*kadar,row[0]))

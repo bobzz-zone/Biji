@@ -25,6 +25,14 @@ frappe.ui.form.on('BAP', {
 	},
 	refresh: function(frm): {
 		frm.set_df_property("unit_produksi", "read_only", frm.doc.__islocal ? 0 : 1);
+		if (frm.doc.docstatus==0){
+			frappe.call({
+				method:"penerimaan_biji.penerimaan_biji.doctype.bap.bap.get_harga",
+				callback: function(r) {
+					cur_frm.set_value("harga", r.message);
+				}
+			});
+		}
 	},
 	bruto: function(frm) {
 		if (frm.doc.tara){
@@ -33,9 +41,11 @@ frappe.ui.form.on('BAP', {
 			frm.doc.netto = frm.doc.bruto;
 		}
 		if (frm.doc.kadar_air && frm.doc.netto){
-			frm.doc.total = frm.doc.netto - (frm.doc.netto * frm.doc.kadar_air);
+			frm.doc.total = frm.doc.netto - (frm.doc.netto * frm.doc.kadar_air / 100);
+			frm.doc.rekomendasi =  frm.doc.total * frm.doc.harga
 		}
 		frm.refresh_field("total");
+		frm.refresh_field("rekomendasi")
 		frm.refresh_field("netto");
 	},
 	tara: function(frm) {
@@ -45,15 +55,19 @@ frappe.ui.form.on('BAP', {
 			frm.doc.netto = 0;
 		}
 		if (frm.doc.kadar_air && frm.doc.netto){
-			frm.doc.total = frm.doc.netto - (frm.doc.netto * frm.doc.kadar_air);
+			frm.doc.total = frm.doc.netto - (frm.doc.netto * frm.doc.kadar_air / 100);
+			frm.doc.rekomendasi =  frm.doc.total * frm.doc.harga
 		}
 		frm.refresh_field("total");
+		frm.refresh_field("rekomendasi")
 		frm.refresh_field("netto");
 	},
 	kadar_air: function(frm) {
 		if (frm.doc.kadar_air && frm.doc.netto){
-			frm.doc.total = frm.doc.netto - (frm.doc.netto * frm.doc.kadar_air);
+			frm.doc.total = frm.doc.netto - (frm.doc.netto * frm.doc.kadar_air / 100);
+			frm.doc.rekomendasi =  frm.doc.total * frm.doc.harga
 		}
+		frm.refresh_field("rekomendasi")
 		frm.refresh_field("total");
 	}
 });

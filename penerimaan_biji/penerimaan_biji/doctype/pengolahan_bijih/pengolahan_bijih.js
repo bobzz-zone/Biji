@@ -151,16 +151,16 @@ function netto_calc(frm){
 	frm.doc.netto = br - ta;
 	var ka = 0;
 	if (frm.doc.kadar_air){
-		ka = frm.doc.kadar_air * frm.doc.netto;
+		ka = frm.doc.kadar_air * frm.doc.netto/100;
 		frm.doc.berat_air = ka;
 	}
 	frm.doc.berat_ore = frm.doc.netto - ka;
 
 	frm.doc.total=0;
 	if (frm.doc.sn_def!=null && frm.doc.sn_def>0){
-		frm.doc.total = frm.doc.berat_ore * frm.doc.sn_def;
+		frm.doc.total = frm.doc.berat_ore * frm.doc.sn_def/100;
 	}else if (frm.doc.sn_tak!=null && frm.doc.sn_tak>0){
-		frm.doc.total = frm.doc.berat_ore * frm.doc.sn_tak;
+		frm.doc.total = frm.doc.berat_ore * frm.doc.sn_tak/100;
 	}else if (frm.doc.sn_est!=null && frm.doc.sn_est>0){
 		frm.doc.total = frm.doc.qty * frm.doc.sn_est;
 	}
