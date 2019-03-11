@@ -23,6 +23,13 @@ frappe.ui.form.on('BAP', {
 				};
 		});
 	},
+	validate: function(frm) {
+		if (frm.doc.rekomendasi < frm.doc.kompensasi && frm.doc.catatan==""){
+			frappe.throw("Untuk memberi harga di atas harga rekomendasi di perlukan keterangan");
+			return false;
+		}
+		return true;
+	},
 	refresh: function(frm) {
 		frm.set_df_property("unit_produksi", "read_only", frm.doc.__islocal ? 0 : 1);
 		if (frm.doc.docstatus==0){
