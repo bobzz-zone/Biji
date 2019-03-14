@@ -106,6 +106,10 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+					"name": "Kartu Tambang",
+				},
+				{
+					"type": "doctype",
 					"name": "Jenis Material",
 				},
 				{
