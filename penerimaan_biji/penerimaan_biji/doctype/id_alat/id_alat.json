@@ -704,7 +704,7 @@
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
- "modified": "2019-02-12 14:32:47.992321", 
+ "modified": "2019-03-14 10:17:05.823218", 
  "modified_by": "Administrator", 
  "module": "Penerimaan Biji", 
  "name": "ID Alat", 
@@ -714,7 +714,7 @@
   {
    "amend": 0, 
    "apply_user_permissions": 0, 
-   "cancel": 0, 
+   "cancel": 1, 
    "create": 1, 
    "delete": 1, 
    "email": 1, 

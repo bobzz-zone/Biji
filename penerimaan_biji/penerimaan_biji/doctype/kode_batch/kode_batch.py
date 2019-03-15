@@ -6,15 +6,18 @@ from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
 from frappe.model.naming import make_autoname
-from frappe.utils import now
+from frappe.utils import now , now_datetime
 class KodeBatch(Document):
 	def validate(self):
 		if self.status=="Closed":
 			frappe.throw("Data Batch Sudah Tidak Boleh di Update")
 	def autoname(self):
+		today=now_datetime()
 		if self.no > 999 :
 			frappe.throw("No Batch Tidak boleh lebih dari 999")
-		self.name=make_autoname("{}.YY.{:0>3d}".format(self.s_loc,self.no),doc=self)
+		if self.no == 0 :
+			frappe.throw("No Batch Tidak boleh 0")
+		self.name="{}{}{:0>3d}".format(self.s_loc,today.strftime('%y'),self.no)
 	def calculate(self):
 		if self.sn_est and self.sn_est>0:
 			self.ton_est=self.sn_est*self.total
@@ -32,8 +35,6 @@ class KodeBatch(Document):
 			self.ton_def=0
 		if self.status=="Open":
 			self.total_final=self.ton_est
-		
-		
 @frappe.whitelist()
 def close_batch(name):
 	doc = frappe.get_doc("Kode Batch",name)
