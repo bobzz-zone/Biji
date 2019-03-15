@@ -19,6 +19,7 @@ class PengirimanBatch(Document):
 		
 	def on_cancel(self):
 		frappe.throw("Dokumen tidak dapat di batalkan")
+		# pass
 	def on_submit(self):
 		total = 0
 		for row in self.batch_list:
