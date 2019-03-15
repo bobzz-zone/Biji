@@ -27,6 +27,7 @@ class DataProduksi(Document):
 		batch.ton_tak=batch.sn_tak*batch.total
 		batch.ton_est=batch.sn_est*batch.total
 		batch.calculate()
+		batch.closing=now()
 		batch.save(ignore_permissions=True)
 	def on_delete(self):
 		batch = frappe.get_doc("Kode Batch",self.batch)
