@@ -12,7 +12,9 @@ class KodeBatch(Document):
 		if self.status=="Closed":
 			frappe.throw("Data Batch Sudah Tidak Boleh di Update")
 	def autoname(self):
-		self.name=make_autoname("{}.YY.{}".format(self.s_loc,self.no),doc=self)
+		if self.no > 999 :
+			frappe.throw("No Batch Tidak boleh lebih dari 999")
+		self.name=make_autoname("{}.YY.{:0>3d}".format(self.s_loc,self.no),doc=self)
 	def calculate(self):
 		if self.sn_est and self.sn_est>0:
 			self.ton_est=self.sn_est*self.total
