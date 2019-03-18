@@ -22,8 +22,10 @@ class PengirimanBatch(Document):
 		# pass
 	def on_submit(self):
 		total = 0
+		qty=0
 		for row in self.batch_list:
-			total = row.total
+			qty = row.total
+			total = row.ton
 			batch=frappe.get_doc("Kode Batch",row.batch)
 			batch.jalan=1
 			batch.lokasi_temp=self.lokasi
@@ -32,3 +34,4 @@ class PengirimanBatch(Document):
 			batch.calculate()
 			batch.save(ignore_permissions=1)
 		self.input=total
+		self.total_qty = qty

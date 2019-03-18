@@ -19,6 +19,7 @@ class KodeBatch(Document):
 			frappe.throw("No Batch Tidak boleh 0")
 		self.name="{}{}{:0>3d}".format(self.s_loc,today.strftime('%y'),self.no)
 	def calculate(self):
+		posisi = "Estimasi"
 		if self.sn_est and self.sn_est>0:
 			self.ton_est=self.sn_est*self.total
 		else:
@@ -26,13 +27,16 @@ class KodeBatch(Document):
 
 		if self.sn_tak and self.sn_tak>0:
 			self.ton_tak=self.sn_tak*self.total
+			posisi="Taksasi"
 		else:
 			self.ton_tak=0
 
 		if self.sn_def and self.sn_def>0:
 			self.ton_def=self.sn_def*self.total
+			posisi="Definitif"
 		else:
 			self.ton_def=0
+		self.posisi=posisi
 		if self.status=="Open":
 			self.total_final=self.ton_est
 @frappe.whitelist()
@@ -42,3 +46,9 @@ def close_batch(name):
 	doc.status = "Closed"
 	doc.save()
 	frappe.db.sql("""update `tabData Produksi` set status = "Closed" where batch = "{}" """.format(name))
+def update_posisi():
+	list_batch = frappe.db.sql("""select name from `tabKode Batch` where docstatus!=2 """,as_list=1)
+	for row in list_batch:
+		data = frappe.get_doc("Kode Batch",row[0])
+		data.calculate()
+		batch.save(ignore_permissions=1)

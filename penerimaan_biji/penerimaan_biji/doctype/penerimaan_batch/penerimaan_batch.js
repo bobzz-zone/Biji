@@ -65,10 +65,12 @@ function netto_calc(frm){
 	frm.doc.berat_ore = frm.doc.netto - ka;
 
 	frm.doc.total=0;
+	frm.doc.ton_def = frm.doc.berat_ore * frm.doc.sn_def / 100;
+	frm.doc.ton_tak = frm.doc.berat_ore * frm.doc.sn_tak / 100;
 	if (frm.doc.sn_def!=null && frm.doc.sn_def>0){
-		frm.doc.total = frm.doc.berat_ore * frm.doc.sn_def / 100;
+		frm.doc.total = frm.doc.ton_def;
 	}else if (frm.doc.sn_tak!=null && frm.doc.sn_tak>0){
-		frm.doc.total = frm.doc.berat_ore * frm.doc.sn_tak / 100;
+		frm.doc.total = frm.doc.ton_tak;
 	}else if (frm.doc.sn_est!=null && frm.doc.sn_est>0){
 		frm.doc.total = frm.doc.qty * frm.doc.sn_est;
 	}

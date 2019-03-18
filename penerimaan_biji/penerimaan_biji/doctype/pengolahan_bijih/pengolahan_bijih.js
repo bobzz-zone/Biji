@@ -102,7 +102,7 @@ function get_batch_value(frm){
              	  if (frm.doc.type == "Input"){
              	  	frm.set_value('qty', batch.total);
              	  	frm.set_value('sn_tak', batch.tak_percent);
-             	  	frm.set_value('tak_percent', batch.def_percent);
+             	  	frm.set_value('sn_def', batch.def_percent);
              	  	frm.set_value('tara', batch.tara);
              	  	frm.set_value('kadar_air', batch.kadar_air);
              	  	frm.set_value('berat_air', batch.berat_air);
@@ -114,7 +114,7 @@ function get_batch_value(frm){
              	  else{
              	  	frm.set_value('qty', 0);
              	  	frm.set_value('sn_tak', 0);
-             	  	frm.set_value('tak_percent', 0);
+             	  	frm.set_value('sn_def', 0);
              	  	frm.set_value('tara', 0);
              	  	frm.set_value('kadar_air', 0);
              	  	frm.set_value('berat_air', 0);
@@ -127,7 +127,7 @@ function get_batch_value(frm){
              else{
              	  	frm.set_value('qty', 0);
              	  	frm.set_value('sn_tak', 0);
-             	  	frm.set_value('tak_percent', 0);
+             	  	frm.set_value('sn_def', 0);
              	  	frm.set_value('tara', 0);
              	  	frm.set_value('kadar_air', 0);
              	  	frm.set_value('berat_air', 0);
