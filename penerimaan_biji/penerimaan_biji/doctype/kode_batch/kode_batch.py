@@ -51,4 +51,4 @@ def update_posisi():
 	for row in list_batch:
 		data = frappe.get_doc("Kode Batch",row[0])
 		data.calculate()
-		batch.save(ignore_permissions=1)
+		data.save(ignore_permissions=1)
