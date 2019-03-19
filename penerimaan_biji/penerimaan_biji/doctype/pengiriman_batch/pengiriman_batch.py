@@ -10,13 +10,15 @@ class PengirimanBatch(Document):
 	pass
 	def validate(self):
 		total = 0
+		ton=0
 		for row in self.batch_list:
 			batch=frappe.get_doc("Kode Batch",row.batch)
 			total = row.total
+			ton=row.ton
 			if batch.jalan==1 or batch.used==1 or batch.status=="Open":
 				frappe.throw("Batch {} Tidak bisa di lakukan pengiriman".format(batch.name))
-		self.input=total
-		
+		self.total_qty=total
+		self.input=ton
 	def on_cancel(self):
 		frappe.throw("Dokumen tidak dapat di batalkan")
 		# pass
