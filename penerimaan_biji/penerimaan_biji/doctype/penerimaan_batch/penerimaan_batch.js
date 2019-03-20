@@ -28,6 +28,11 @@ frappe.ui.form.on('Penerimaan Batch', {
 					}
 				};
 		});
+		if (frm.doc.docstatus==1){
+			if (frm.doc.sn_def && frm.doc.sn_def>0){
+				frm.set_df_property("sn_def", "read_only", true);
+			}
+		}
 	},
 	bruto: function(frm) {
 		netto_calc(frm);
