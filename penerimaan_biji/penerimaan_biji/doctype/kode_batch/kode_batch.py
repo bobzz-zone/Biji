@@ -57,7 +57,7 @@ def patch():
 	for row in data:
 		frappe.db.sql("""update `tabData Produksi` set total=(qty*{}) , sn_tak={} where batch="{}" and (sn_tak is null or sn_tak=0) and (sn_def is null or sn_def=0) 
 			""".format(row[1],row[1],row[0]))
-		frappe.db.sql("""update `tabData Produksi` set sn_tak={} where batch="{}" and (sn_tak is null or sn_tak=0) and sn_def>0) 
+		frappe.db.sql("""update `tabData Produksi` set sn_tak={} where batch="{}" and (sn_tak is null or sn_tak=0) and sn_def>0 
 			""".format(row[1],row[1],row[0]))
 	for row in data:
 		detail = frappe.db.sql("""select sum(qty*sn_tak) from `tabData Produksi` where batch="{}" """.format(row[0]),as_list=1)
