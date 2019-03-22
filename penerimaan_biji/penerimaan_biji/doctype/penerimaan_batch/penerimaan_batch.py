@@ -45,7 +45,7 @@ class PenerimaanBatch(Document):
 		num=0
 		count = frappe.db.sql("""select count(1) from `tabPenerimaan Batch` where docstatus=1 and batch="{}" """.format(self.batch),as_list=1)
 		for row in count:
-			num = cint(row[0])
+			num = cint(row[0])+1
 		batch=frappe.get_doc("Kode Batch",self.batch)
 		#if not batch.sn_tak:
 		if self.sn_tak :
