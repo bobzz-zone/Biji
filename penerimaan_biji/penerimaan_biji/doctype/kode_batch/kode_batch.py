@@ -55,6 +55,7 @@ def update_posisi():
 def patch():
 	data = frappe.db.sql("select name , sn_tak, ton_tak from `tabKode Batch` where sn_tak>0 and (ton_tak is null or ton_tak=0)",as_list=1)
 	for row in data:
+		print(row[0])
 		frappe.db.sql("""update `tabData Produksi` set total=(qty*{}) , sn_tak={} where batch="{}" and (sn_tak is null or sn_tak=0) and (sn_def is null or sn_def=0) 
 			""".format(row[1],row[1],row[0]))
 		frappe.db.sql("""update `tabData Produksi` set sn_tak={} where batch="{}" and (sn_tak is null or sn_tak=0) and sn_def>0 
