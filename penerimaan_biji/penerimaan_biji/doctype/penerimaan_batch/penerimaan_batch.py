@@ -21,7 +21,8 @@ class PenerimaanBatch(Document):
 		if self.is_first==1:
 			if self.sn_def:
 				batch=frappe.get_doc("Kode Batch",self.batch)
-				batch.sn_def = self.berat_ore * (self.sn_def/100) / self.qty
+				batch.sn_def = self.berat_ore * (flt(self.sn_def)/flt(100)) / flt(self.qty)
+				#frappe.throw("""{} == {} -- {} x {} / {}""".format(batch.sn_def ,flt(self.berat_ore) * (self.sn_def/flt(100)) / flt(self.qty),self.berat_ore,self.sn_def,self.qty))
 				batch.def_percent = self.sn_def
 				batch.total_final = self.total
 				if self.type == "PPBT" or self.type == "BPM" :
@@ -42,19 +43,19 @@ class PenerimaanBatch(Document):
 			frappe.throw("Tidak bisa update")
 	def on_submit(self):
 		num=0
-		count = frappe.db.sql("""select count(1) from `tabPengiriman Batch` where docstatus=1 """,as_list=1)
+		count = frappe.db.sql("""select count(1) from `tabPenerimaan Batch` where docstatus=1 and batch="{}" """.format(self.batch),as_list=1)
 		for row in count:
 			num = cint(row[0])
 		batch=frappe.get_doc("Kode Batch",self.batch)
 		#if not batch.sn_tak:
 		if self.sn_tak :
 			if num==1:
-				batch.sn_tak = self.berat_ore * (self.sn_tak/100) / self.qty
+				batch.sn_tak = self.berat_ore * (flt(self.sn_tak)/flt(100)) / flt(self.qty)
 			batch.tak_percent = self.sn_tak
 		#if not batch.sn_def:
 		if self.sn_def:
 			if num==1:
-				batch.sn_def = self.berat_ore * (self.sn_def/100) / self.qty
+				batch.sn_def = self.berat_ore * (flt(self.sn_def)/flt(100)) / flt(self.qty)
 			batch.def_percent = self.sn_def
 		#batch.ton_final=self.total
 		if self.type == "PPBT" or self.type == "BPM" :
