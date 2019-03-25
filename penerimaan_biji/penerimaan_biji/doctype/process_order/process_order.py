@@ -15,8 +15,8 @@ class ProcessOrder(Document):
 			for row in self.batch_list:
 				tin = tin + row.total
 				tou = tou + row.output
-				row.recovery = (row.total / row.output)*100
+				row.recovery = ( row.output / row.total)*100
 			if tin and tou:
-				self.recovery = (tin / tou)*100
+				self.recovery = (tou/tin)*100
 			self.output=tou
 			self.input=tin
