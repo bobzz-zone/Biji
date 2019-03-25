@@ -48,11 +48,11 @@ class PengolahanBijih(Document):
 
 def patch_output():
 	list_ou = frappe.db.sql("""select name,po,batch,total from `tabPengolahan Bijih` where docstatus=1 and type="Output" """,as_list=1)
-	for row in list_ou:
-		po=frappe.get_doc("Process Order",row[1])
+	for ou in list_ou:
+		po=frappe.get_doc("Process Order",ou[1])
 		for row in po.batch_list:
-			if row.batch == row[2]:
-				row.output = flt(row[3])
+			if row.batch == ou[2]:
+				row.output = flt(ou[3])
 		po.recalculate()
 		po.save(ignore_permissions=1)
 			
