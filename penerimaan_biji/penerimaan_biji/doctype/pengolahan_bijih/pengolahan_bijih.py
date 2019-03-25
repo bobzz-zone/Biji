@@ -19,6 +19,9 @@ class PengolahanBijih(Document):
 			frappe.db.sql("""update `tabKode Batch` set used = 1 where name="{}" """.format(self.batch))
 			po.append("batch_list",{"doctype":"Process Order Batch","batch":self.batch,"total":self.total})
 		if self.type == "Output":
+			for row in po.batch_list:
+				if row.batch == self.batch:
+					row.output = self.total
 			frappe.db.sql("""update `tabKode Batch` set used = 0 where name="{}" """.format(self.batch))
 			batch=frappe.get_doc("Kode Batch",self.batch)
 			#batch.ton_final=self.total
@@ -38,7 +41,18 @@ class PengolahanBijih(Document):
 				batch.def_percent = self.sn_def
 			#batch.calculate()
 			batch.save(ignore_permissions=1)
+		po.recalculate()
 		po.save(ignore_permissions=1)
 	def on_cancel(self):
 		frappe.throw("Dokumen tidak dapat di batalkan")
+
+def patch_output():
+	list_ou = frappe.db.sql("""select name,po,batch,total from `tabPengolahan Bijih` where docstatus=1 and type="Output" """,as_list=1)
+	for row in list_ou:
+		po=frappe.get_doc("Process Order",row[1])
+		for row in po.batch_list:
+			if row.batch == row[2]:
+				row.output = flt(row[3])
+		po.recalculate()
+		po.save(ignore_permissions=1)
 			
