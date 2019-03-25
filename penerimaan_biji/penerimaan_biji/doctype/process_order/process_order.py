@@ -18,3 +18,5 @@ class ProcessOrder(Document):
 				row.recovery = (row.total / row.output)*100
 			if tin and tou:
 				self.recovery = (tin / tou)*100
+			self.output=tou
+			self.input=tin
