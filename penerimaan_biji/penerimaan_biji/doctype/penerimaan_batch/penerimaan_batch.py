@@ -42,10 +42,10 @@ class PenerimaanBatch(Document):
 		else:
 			frappe.throw("Tidak bisa update")
 	def on_submit(self):
-		num=0
+		num=1
 		count = frappe.db.sql("""select count(1) from `tabPenerimaan Batch` where docstatus=1 and batch="{}" """.format(self.batch),as_list=1)
 		for row in count:
-			num = cint(row[0])+1
+			num = 2
 		batch=frappe.get_doc("Kode Batch",self.batch)
 		#if not batch.sn_tak:
 		if self.sn_tak :
