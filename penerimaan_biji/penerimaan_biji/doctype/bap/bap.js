@@ -36,7 +36,9 @@ frappe.ui.form.on('BAP', {
 			frappe.call({
 				method:"penerimaan_biji.penerimaan_biji.doctype.bap.bap.get_harga",
 				callback: function(r) {
+					if (frm.doc.harga+""!=r.message){
 					cur_frm.set_value("harga", r.message);
+				}
 				}
 			});
 		}
