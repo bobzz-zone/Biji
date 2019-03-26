@@ -39,6 +39,7 @@ class KodeBatch(Document):
 		self.posisi=posisi
 		if self.status=="Open":
 			self.total_final=self.ton_est
+			self.berat_temp=self.total_final
 @frappe.whitelist()
 def close_batch(name):
 	doc = frappe.get_doc("Kode Batch",name)

@@ -42,19 +42,21 @@ class PenerimaanBatch(Document):
 		else:
 			frappe.throw("Tidak bisa update")
 	def on_submit(self):
-		num=1
-		count = frappe.db.sql("""select count(1) from `tabPenerimaan Batch` where docstatus=1 and batch="{}" """.format(self.batch),as_list=1)
-		for row in count:
-			num = 2
+		#num=1
+		#count = frappe.db.sql("""select count(1) from `tabPenerimaan Batch` where docstatus=1 and batch="{}" """.format(self.batch),as_list=1)
+		#for row in count:
+		#	num = 2
 		batch=frappe.get_doc("Kode Batch",self.batch)
 		#if not batch.sn_tak:
 		if self.sn_tak :
-			if num==1:
+			#if num==1:
+			if self.is_first==1:
 				batch.sn_tak = self.berat_ore * (flt(self.sn_tak)/flt(100)) / flt(self.qty)
 			batch.tak_percent = self.sn_tak
 		#if not batch.sn_def:
 		if self.sn_def:
-			if num==1:
+			#if num==1:
+			if self.is_first==1:
 				batch.sn_def = self.berat_ore * (flt(self.sn_def)/flt(100)) / flt(self.qty)
 			batch.def_percent = self.sn_def
 		#batch.ton_final=self.total
@@ -77,10 +79,12 @@ class PenerimaanBatch(Document):
 		batch.jalan_temp=""
 		batch.lokasi_temp=""
 		batch.type_temp=""
-		if num==1:
+		#if num==1:
+		if self.is_first==1:
 			batch.total_final = self.total
 			batch.calculate()
-			self.is_first=1
+			batch.is_first=0
+		batch.berat_temp=self.total
 		batch.save(ignore_permissions=1)
 		if num==1:
 			list_dp = frappe.db.sql("""select name , qty from `tabData Produksi` where batch="{}" and (sn_def is NULL or sn_def=0) and (sn_tak is NULL or sn_tak=0) """.format(self.batch),as_list=1)
