@@ -13,8 +13,8 @@ class PengirimanBatch(Document):
 		ton=0
 		for row in self.batch_list:
 			batch=frappe.get_doc("Kode Batch",row.batch)
-			total = row.total
-			ton=row.ton
+			total += row.total
+			ton+=row.ton
 			if batch.jalan==1 or batch.used==1 or batch.status=="Open":
 				frappe.throw("Batch {} Tidak bisa di lakukan pengiriman".format(batch.name))
 		self.total_qty=total
