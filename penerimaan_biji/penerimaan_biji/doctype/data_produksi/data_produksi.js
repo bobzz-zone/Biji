@@ -34,6 +34,10 @@ frappe.ui.form.on('Data Produksi', {
             frm.refresh_field("total");
         },refresh:function(frm){
         	frm.set_df_property("batch", "read_only", frm.doc.__islocal ? 0 : 1);
+            if (frm.doc.status=="Closed"){
+            frm.set_df_property("date", "read_only", 1);
+            frm.set_df_property("qty", "read_only", 1);
+            }
         }
 
 });
