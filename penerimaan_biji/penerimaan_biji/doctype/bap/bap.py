@@ -24,8 +24,8 @@ class BAP(Document):
 		self.name= "{}/{}/Tbk/BAP-3031/{}-S2.6".format('%04d'%current,self.nama_unit_produksi,today.strftime('%y'))
 	def on_submit(self):
 		batch=frappe.get_doc("Kode Batch",self.batch)
-		if batch.closing and batch.closing > now() :
-			frappe.throw("Batch Sudah tidak bisa di pakai untuk produksi")
+		#if batch.closing and batch.closing > now() :
+		#	frappe.throw("Batch Sudah tidak bisa di pakai untuk produksi")
 		x=0
 		if batch.sn_def and batch.sn_def >0:
 			x=batch.sn_def*self.bruto
