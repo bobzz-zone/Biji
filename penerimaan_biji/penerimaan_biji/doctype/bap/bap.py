@@ -48,7 +48,7 @@ class BAP(Document):
 			"nama_bu":self.nama_bu,
 			"nama_lokasi":self.nama_lokasi,
 			"satuan":self.satuan,
-			"qty":self.bruto,
+			"qty":self.qty,
 			"sn_est":batch.sn_est,
 			"sn_tak":batch.sn_tak,
 			"sn_def":batch.sn_def,
