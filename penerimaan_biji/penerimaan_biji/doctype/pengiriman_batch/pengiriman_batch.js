@@ -14,7 +14,8 @@ frappe.ui.form.on('Pengiriman Batch', {
 					"filters": {
 						"status": "Closed",
 						"jalan":0,
-						"used":0
+						"used":0,
+						"is_end":0
 					}
 				};
 		});

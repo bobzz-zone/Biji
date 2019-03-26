@@ -25,7 +25,8 @@ frappe.ui.form.on('Penerimaan Batch', {
 			return {
 					"filters": {
 						"status": "Closed",
-						"jalan":1
+						"jalan":1,
+						"is_end":0
 					}
 				};
 		});

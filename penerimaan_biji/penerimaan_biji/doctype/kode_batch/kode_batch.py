@@ -11,6 +11,8 @@ class KodeBatch(Document):
 	def validate(self):
 		if self.status=="Closed":
 			frappe.throw("Data Batch Sudah Tidak Boleh di Update")
+	def lebur(self):
+		frappe.db.sql("""update `tabKode Batch` set is_end=1 where name="{}" """.format(self.name))
 	def autoname(self):
 		today=now_datetime()
 		if self.no > 999 :

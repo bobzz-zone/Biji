@@ -35,7 +35,8 @@ frappe.ui.form.on('Pengolahan Bijih', {
 			return {
 					"filters": {
 						"used": "0",
-						"status": "Closed"
+						"status": "Closed",
+						"is_end":0
 					}
 				};
 		});
@@ -46,7 +47,8 @@ frappe.ui.form.on('Pengolahan Bijih', {
 			return {
 					"filters": {
 						"used": "0",
-						"status": "Closed"
+						"status": "Closed",
+						"is_end":0
 					}
 				};
 			});	
@@ -57,7 +59,8 @@ frappe.ui.form.on('Pengolahan Bijih', {
 			return {
 					"filters": {
 						"used": "1",
-						"status": "Closed"
+						"status": "Closed",
+						"is_end":0
 					}
 				};
 			});		
