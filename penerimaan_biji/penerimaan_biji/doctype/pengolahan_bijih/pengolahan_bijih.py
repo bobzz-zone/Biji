@@ -31,6 +31,7 @@ class PengolahanBijih(Document):
 			batch.netto = self.netto
 			batch.berat_ore = self.berat_ore
 			batch.bruto = self.bruto
+			batch,output_prod = self.total
 			#if not batch.sn_tak:
 			if self.sn_tak :
 			#		batch.sn_tak = self.berat_ore * self.sn_tak / self.qty / 100

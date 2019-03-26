@@ -18,6 +18,7 @@ cur_frm.add_fetch("batch", "tak_percent", "sn_tak");
 cur_frm.add_fetch("batch", "def_percent", "sn_def");
 cur_frm.add_fetch("batch", "total", "qty");
 cur_frm.add_fetch("batch", "total_final", "total");
+cur_frm.add_fetch("batch", "is_first", "is_first");
 frappe.ui.form.on('Penerimaan Batch', {
 	onload: function(frm) {
 		cur_frm.set_query("batch", function() {
@@ -32,7 +33,15 @@ frappe.ui.form.on('Penerimaan Batch', {
 			if (frm.doc.sn_def && frm.doc.sn_def>0){
 				frm.set_df_property("sn_def", "read_only", true);
 				frm.set_df_property("metode_def", "read_only", true);
+				frm.set_df_property("nama_penanggung_jawab", "read_only", true);
+				
 			}
+		}
+		if (frm.doc.metode_def){
+			frm.set_df_property("metode_def", "hidden", true);
+		}
+		if (frm.doc.metode_tak){
+			frm.set_df_property("metode_tak", "hidden", true);
 		}
 	},
 	bruto: function(frm) {
